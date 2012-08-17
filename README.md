@@ -47,20 +47,11 @@ $ rails generate thincloud:postmark
 
 ## Contributing
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
-
-
-## Contributing
-
 1. [Fork it](https://github.com/newleaders/thincloud-postmark/fork_select)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Added some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
-5. [Create a Pull Request](hhttps://github.com/newleaders/thincloud-postmark/pull/new)
+5. [Create a Pull Request](https://github.com/newleaders/thincloud-postmark/pull/new)
 
 
 ## License

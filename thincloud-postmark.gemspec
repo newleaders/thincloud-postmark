@@ -6,7 +6,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["rbousquet@newleaders.com", "pcohen@newleaders.com"]
   gem.description   = "Postmark configuration for Rails apps."
   gem.summary       = "Postmark configuration for Rails apps."
-  gem.homepage      = ""
+  gem.homepage      = "http://newleaders.github.com/thincloud-postmark"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
