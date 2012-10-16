@@ -15,5 +15,17 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Thincloud::Postmark::VERSION
 
+  gem.add_development_dependency "rails", "~> 3.2.8"
+
+  gem.add_development_dependency "cane", "~> 2.3.0"
+  gem.add_development_dependency "guard", "~> 1.3.3"
+  gem.add_development_dependency "minitest", "~> 3.4.0"
+  gem.add_development_dependency "guard-minitest", "~> 0.5.0"
+  gem.add_development_dependency "minitest-rails", "~> 0.1.3"
+  gem.add_development_dependency "minitest-rails-shoulda", "~> 0.1.0"
+  gem.add_development_dependency "rb-fsevent", "~> 0.9.1"
+  gem.add_development_dependency "simplecov", "~> 0.6.4"
+  gem.add_development_dependency "mocha", "~> 0.12.4" # Must be after minitest
+
   gem.add_runtime_dependency "postmark-rails", "~> 0.4.1"
 end
