@@ -1,4 +1,5 @@
 require "postmark-rails"
+require "thincloud/postmark/configuration"
 require "thincloud/postmark/version"
 
 module Thincloud
