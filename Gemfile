@@ -1,4 +1,9 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-# Specify your gem's dependencies in thincloud-postmark.gemspec
 gemspec
+
+group :test do
+  platforms :ruby do
+    gem "simplecov"
+  end
+end
