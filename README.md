@@ -37,7 +37,7 @@ $ gem install thincloud-postmark
 
 ## Usage
 
-This gem adds a generator to Rails, `thincloud:postmark`. Running the generator will install a Postmark initializer and a mail interceptor for non-production environments.
+This gem adds a generator to Rails, `thincloud:postmark`. Running the generator will install a mail interceptor for non-production environments and a configuration initializer in `config/initializers/thincloud_postmark.rb` where your API key or environment variable can be defined.
 
 * Invoke the generator:
 
