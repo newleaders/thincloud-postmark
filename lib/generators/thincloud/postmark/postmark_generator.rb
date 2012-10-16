@@ -12,7 +12,6 @@ module Thincloud
         gem "postmark-rails", "~> 0.4.1"
 
         copy_file "action_mailer.rb", "config/initializers/action_mailer.rb"
-        copy_file "postmark.rb", "config/initializers/postmark.rb"
         copy_file "mail_interceptor.rb", "lib/mail_interceptor.rb"
 
         say_status "", ""
