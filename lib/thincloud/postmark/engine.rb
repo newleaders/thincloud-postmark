@@ -1,6 +1,17 @@
 module Thincloud
   module Postmark
+    # Public: Thincloud Postmark Engine
     class Engine < ::Rails::Engine
+      attr_accessor :options
+
+      # initialize the configuration so it is available during rails init
+      ActiveSupport.on_load :before_configuration do
+        unless config.respond_to? :thincloud
+          config.thincloud = ActiveSupport::OrderedOptions.new
+        end
+
+        config.thincloud.postmark ||= Thincloud::Postmark.configure
+      end
 
       # Require the config initializer in advance so it is available for
       # the "thincloud.postmark.action_mailer" initializer
@@ -12,7 +23,7 @@ module Thincloud
       # Apply the postmark settings just before ActionMailer applies them
       initializer "thincloud.postmark.action_mailer", before: "action_mailer.set_configs" do
         if api_key = Thincloud::Postmark.configuration.try(:api_key)
-          Postmark.secure = true
+          ::Postmark.secure = true
           Rails.application.config.action_mailer.delivery_method = :postmark
           Rails.application.config.action_mailer.postmark_settings = { api_key: api_key }
         end

@@ -6,7 +6,8 @@ module Thincloud
 
     def self.configure
       self.configuration ||= Configuration.new
-      yield configuration
+      yield configuration if block_given?
+      configuration
     end
 
     # Public: Configuration options for the Thincloud::Postmark module
@@ -14,7 +15,9 @@ module Thincloud
       attr_accessor :api_key
 
       def initialize
-        @api_key = ENV["POSTMARK_API_KEY"] || "POSTMARK_API_TEST"
+        api_key = ENV["POSTMARK_API_KEY"] || "POSTMARK_API_TEST"
+
+        @api_key ||= api_key
       end
     end
   end
