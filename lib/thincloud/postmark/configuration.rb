@@ -12,15 +12,22 @@ module Thincloud
 
     # Public: Configuration options for the Thincloud::Postmark module
     class Configuration
-      attr_accessor :api_key,
-                    :secure
+      attr_accessor :api_key
 
       def initialize
         api_key = ENV["POSTMARK_API_KEY"] || "POSTMARK_API_TEST"
-        secure  = ENV["POSTMARK_SECURE"] || true
 
         @api_key ||= api_key
-        @secure  ||= secure
+
+        self.secure  = ENV["POSTMARK_SECURE"] || true
+      end
+
+      def secure=(s)
+        ::Postmark.secure = s
+      end
+
+      def secure
+        ::Postmark.secure
       end
     end
   end

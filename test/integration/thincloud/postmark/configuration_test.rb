@@ -6,6 +6,8 @@ describe Thincloud::Postmark::Configuration do
   # defaults
   it { config.must_be_kind_of Thincloud::Postmark::Configuration }
   it { config.api_key.must_equal "POSTMARK_API_TEST" }
+  it { config.secure.must_equal true }
+  it { ::Postmark.secure.must_equal true }
 
   describe "with configure block" do
     before do
@@ -17,8 +19,15 @@ describe Thincloud::Postmark::Configuration do
     it { config.api_key.must_equal "abc123" }
   end
 
-  describe "updates Postmark secure setting" do
-    it { ::Postmark.secure.must_equal true }
+  describe "changes Postmark secure setting" do
+    before do
+      Thincloud::Postmark.configure do |config|
+        config.secure = false
+      end
+    end
+
+    it { config.secure.must_equal false }
+    it { ::Postmark.secure.must_equal false }
   end
 
   describe "updates Rails application configuration" do
