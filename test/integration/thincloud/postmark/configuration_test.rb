@@ -17,7 +17,9 @@ describe Thincloud::Postmark::Configuration do
     it { config.api_key.must_equal "abc123" }
   end
 
-  # TODO: Postmark.secure
+  describe "updates Postmark secure setting" do
+    it { ::Postmark.secure.must_equal true }
+  end
 
   describe "updates Rails application configuration" do
     let(:app_config) { Dummy::Application.config.action_mailer }
