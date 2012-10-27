@@ -14,7 +14,7 @@ module Thincloud
       attr_accessor :api_key
 
       def initialize
-        @api_key = "POSTMARK_API_TEST"
+        @api_key = ENV["POSTMARK_API_KEY"] || "POSTMARK_API_TEST"
       end
     end
   end
