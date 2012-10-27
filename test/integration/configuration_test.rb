@@ -1,13 +1,11 @@
 require "minitest_helper"
 
-describe Thincloud::Postmark::Configuration do
+describe Dummy::Application.config do
   let(:config) { Dummy::Application.config.thincloud.postmark }
 
   # defaults
   it { config.must_be_kind_of Thincloud::Postmark::Configuration }
-  it { config.api_key.must_equal "POSTMARK_API_TEST" }
-  it { config.secure.must_equal true }
-  it { ::Postmark.secure.must_equal true }
+  it { config.api_key.must_equal "INITIALIZER" }
 
   describe "with configure block" do
     before do
@@ -21,10 +19,14 @@ describe Thincloud::Postmark::Configuration do
 
   describe "changes Postmark secure setting" do
     before do
+      @original_setting = config.secure
+
       Thincloud::Postmark.configure do |config|
         config.secure = false
       end
     end
+
+    after { config.secure = @original_setting }
 
     it { config.secure.must_equal false }
     it { ::Postmark.secure.must_equal false }
@@ -32,7 +34,7 @@ describe Thincloud::Postmark::Configuration do
 
   describe "updates Rails application configuration" do
     let(:app_config) { Dummy::Application.config.action_mailer }
-    let(:settings) { { api_key: "POSTMARK_API_TEST" } }
+    let(:settings) { { api_key: "INITIALIZER" } }
 
     it { app_config.delivery_method.must_equal :postmark }
     it { app_config.postmark_settings.must_equal settings }
