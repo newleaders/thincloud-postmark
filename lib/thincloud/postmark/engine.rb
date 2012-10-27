@@ -17,15 +17,8 @@ module Thincloud
         config.thincloud.postmark ||= Thincloud::Postmark.configure
       end
 
-      # Require the config initializer in advance so it is available for
-      # the "thincloud.postmark.action_mailer" initializer
-      initializer "thincloud.postmark.configuration", before: "thincloud.postmark.action_mailer" do
-        config_initializer = File.expand_path("config/initializers/thincloud_postmark.rb")
-        require config_initializer if File.exists?(config_initializer)
-      end
-
       # Apply the postmark settings just before ActionMailer applies them
-      initializer "thincloud.postmark.action_mailer", before: "action_mailer.set_configs" do |app|
+      initializer "thincloud.postmark.action_mailer", after: "finisher_hook" do |app|
         if configuration.api_key
           app.config.action_mailer.delivery_method = :postmark
           app.config.action_mailer.postmark_settings = { api_key: configuration.api_key }
