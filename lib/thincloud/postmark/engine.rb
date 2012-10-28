@@ -19,12 +19,14 @@ module Thincloud
 
       initializer "thincloud.postmark.interceptor", after: "finisher_hook" do
         interceptor = Thincloud::Postmark::Interceptor.tap do |i|
-          i.to  = configuration.intercept_to
-          i.cc  = configuration.intercept_cc
-          i.bcc = configuration.intercept_bcc
+          i.to  = configuration.interceptor_to
+          i.cc  = configuration.interceptor_cc
+          i.bcc = configuration.interceptor_bcc
         end
 
-        ::Mail.register_interceptor(interceptor) unless Rails.env.production?
+        if configuration.interceptor_environments.include?(Rails.env.to_sym)
+          ::Mail.register_interceptor(interceptor)
+        end
       end
 
       # Apply the postmark settings just before ActionMailer applies them

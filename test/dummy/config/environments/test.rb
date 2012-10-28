@@ -35,5 +35,6 @@ Dummy::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
-  config.thincloud.postmark.intercept_to = "marshmellowman@staypuft.com"
+  config.thincloud.postmark.interceptor_environments = [:test]
+  config.thincloud.postmark.interceptor_to = "marshmellowman@staypuft.com"
 end
