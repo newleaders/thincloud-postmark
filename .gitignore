@@ -1,3 +1,4 @@
+.DS_Store
 *.gem
 *.rbc
 .bundle
@@ -6,6 +7,7 @@
 Gemfile.lock
 InstalledFiles
 _yardoc
+bin
 coverage
 doc/
 lib/bundler/man
@@ -15,3 +17,8 @@ spec/reports
 test/tmp
 test/version_tmp
 tmp
+log/*.log
+test/dummy/db/*.sqlite3
+test/dummy/log/*.log
+test/dummy/tmp/
+test/dummy/.sass-cache
