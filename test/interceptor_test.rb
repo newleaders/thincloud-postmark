@@ -1,11 +1,13 @@
 require "minitest_helper"
 
 describe Thincloud::Postmark::Interceptor do
-  let(:mail) { OpenStruct.new(to: "e@example.com", subject: "Subject") }
+  let(:mail) { OpenStruct.new(to: "rpeck@epa.gov", subject: "Subject") }
   let(:interceptor) { Thincloud::Postmark::Interceptor }
 
   it { interceptor.must_respond_to(:to) }
   it { interceptor.must_respond_to(:to=) }
+  it { interceptor.must_respond_to(:cc) }
+  it { interceptor.must_respond_to(:cc=) }
   it { interceptor.must_respond_to(:bcc) }
   it { interceptor.must_respond_to(:bcc=) }
   it { interceptor.must_respond_to(:delivering_email) }
@@ -15,7 +17,7 @@ describe Thincloud::Postmark::Interceptor do
       @msg = interceptor.delivering_email(mail)
     end
 
-    it { @msg.subject.must_equal "e@example.com Subject" }
+    it { @msg.subject.must_equal "rpeck@epa.gov Subject" }
   end
 
   describe "sets email `to`" do
@@ -27,12 +29,21 @@ describe Thincloud::Postmark::Interceptor do
     it { @msg.to.must_equal "egon@ghostbusters.com" }
   end
 
-  describe "sets email `bcc`" do
+  describe "sets email `cc`" do
     before do
-      interceptor.bcc = "bcc@bcc.com"
+      interceptor.cc = "venkman@ghostbusters.com"
       @msg = interceptor.delivering_email(mail)
     end
 
-    it { @msg.bcc.must_equal "bcc@bcc.com" }
+    it { @msg.cc.must_equal "venkman@ghostbusters.com" }
+  end
+
+  describe "sets email `bcc`" do
+    before do
+      interceptor.bcc = "stantz@ghostbusters.com"
+      @msg = interceptor.delivering_email(mail)
+    end
+
+    it { @msg.bcc.must_equal "stantz@ghostbusters.com" }
   end
 end

@@ -6,7 +6,8 @@ describe Thincloud::Postmark::Interceptor do
 
   describe "after Rails config" do
     it { interceptors.must_include Thincloud::Postmark::Interceptor }
-    it { interceptor.to.must_match /newleaders/ }
+    it { interceptor.to.must_equal "marshmellowman@staypuft.com" }
+    it { interceptor.cc.must_be_nil }
     it { interceptor.bcc.must_be_nil }
   end
 end

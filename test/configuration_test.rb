@@ -17,7 +17,8 @@ describe Thincloud::Postmark::Configuration do
     it { config.api_key.must_equal "POSTMARK_API_TEST" }
     it { config.secure.must_equal true }
     it { ::Postmark.secure.must_equal true }
-    it { config.intercept_to.must_match /newleaders/ }
+    it { config.intercept_to.must_be_nil }
+    it { config.intercept_cc.must_be_nil }
     it { config.intercept_bcc.must_be_nil }
   end
 

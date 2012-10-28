@@ -20,6 +20,7 @@ module Thincloud
       initializer "thincloud.postmark.interceptor", after: "finisher_hook" do
         interceptor = Thincloud::Postmark::Interceptor.tap do |i|
           i.to  = configuration.intercept_to
+          i.cc  = configuration.intercept_cc
           i.bcc = configuration.intercept_bcc
         end
 

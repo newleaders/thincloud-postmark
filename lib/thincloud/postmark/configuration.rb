@@ -14,16 +14,19 @@ module Thincloud
     class Configuration
       attr_accessor :api_key
       attr_accessor :intercept_to
+      attr_accessor :intercept_cc
       attr_accessor :intercept_bcc
 
       def initialize
-        api_key      = ENV["POSTMARK_API_KEY"] || "POSTMARK_API_TEST"
-        secure       = ENV["POSTMARK_SECURE"] || true
-        intercept_to = ENV["TC_INTERCEPT_TO"] || "#{ENV["USER"]}@newleaders.com"
-        intercept_bcc = ENV["TC_INTERCEPT_BCC"] || nil
+        api_key       = ENV["POSTMARK_API_KEY"] || "POSTMARK_API_TEST"
+        secure        = ENV["POSTMARK_SECURE"] || true
+        intercept_to  = ENV["THINCLOUD_INTERCEPT_TO"]
+        intercept_cc  = ENV["THINCLOUD_INTERCEPT_CC"]
+        intercept_bcc = ENV["THINCLOUD_INTERCEPT_BCC"]
 
         @api_key       ||= api_key
         @intercept_to  ||= intercept_to
+        @intercept_cc  ||= intercept_cc
         @intercept_bcc ||= intercept_bcc
 
         self.secure = secure
