@@ -2,7 +2,8 @@
 class MailInterceptor
   def self.delivering_email(message)
     message.subject = "#{message.to} #{message.subject}"
-    message.to = "#{ENV["USER"]}@newleaders.com"
-    message.bcc = nil
+    message.to      = "#{ENV["USER"]}@localhost"
+    message.cc      = nil
+    message.bcc     = nil
   end
 end
