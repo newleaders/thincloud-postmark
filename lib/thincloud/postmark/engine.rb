@@ -17,6 +17,15 @@ module Thincloud
         config.thincloud.postmark ||= Thincloud::Postmark.configure
       end
 
+      initializer "thincloud.postmark.interceptor", after: "finisher_hook" do
+        interceptor = Thincloud::Postmark::Interceptor.tap do |i|
+          i.to  = configuration.intercept_to
+          i.bcc = configuration.intercept_bcc
+        end
+
+        ::Mail.register_interceptor(interceptor) unless Rails.env.production?
+      end
+
       # Apply the postmark settings just before ActionMailer applies them
       initializer "thincloud.postmark.action_mailer", after: "finisher_hook" do |app|
         if configuration.api_key
