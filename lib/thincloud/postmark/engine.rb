@@ -29,13 +29,16 @@ module Thincloud
         end
       end
 
-      # Apply the postmark settings just before ActionMailer applies them
-      initializer "thincloud.postmark.settings", after: "finisher_hook" do |app|
+      # Rails applies config.action_mailer to ActionMailer::Base before
+      # initializers are run. This hooks into the end of the initialization
+      # process to make sure we have our config settings then we apply them
+      # to AM::Base. Keep them in both places so config appears normal.
+      initializer "thincloud.postmark.settings", before: "finisher_hook" do
         if configuration.api_key
-          postmark_settings = { api_key: configuration.api_key }
-
-          config.action_mailer.delivery_method = :postmark
-          config.action_mailer.postmark_settings = postmark_settings
+          [ActionMailer::Base, config.action_mailer].each do |c|
+            c.delivery_method   = :postmark
+            c.postmark_settings = { api_key: configuration.api_key }
+          end
         end
       end
 
