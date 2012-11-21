@@ -39,4 +39,12 @@ describe Dummy::Application.config do
     it { app_config.delivery_method.must_equal :postmark }
     it { app_config.postmark_settings.must_equal settings }
   end
+
+  describe "updates ActionMailer configuration" do
+    let(:base_config) { ActionMailer::Base }
+    let(:settings) { { api_key: "INITIALIZER" } }
+
+    it { base_config.delivery_method.must_equal :postmark }
+    it { base_config.postmark_settings.must_equal settings }
+  end
 end
