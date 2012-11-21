@@ -2,8 +2,10 @@
 require File.expand_path("../lib/thincloud/postmark/version", __FILE__)
 
 Gem::Specification.new do |gem|
-  gem.authors       = ["Robert Bousquet", "Phil Cohen"]
-  gem.email         = ["rbousquet@newleaders.com", "pcohen@newleaders.com"]
+  gem.authors       = ["Robert Bousquet", "Phil Cohen", "Kenny Johnston",
+                       "Don Morrison"]
+  gem.email         = ["rbousquet@newleaders.com", "pcohen@newleaders.com",
+                       "kjohnston@newleaders.com", "dmorrison@newleaders.com"]
   gem.description   = "Postmark configuration for Rails apps."
   gem.summary       = "Postmark configuration for Rails apps."
   gem.homepage      = "http://newleaders.github.com/thincloud-postmark"
