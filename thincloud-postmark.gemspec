@@ -19,5 +19,5 @@ Gem::Specification.new do |gem|
 
   gem.add_development_dependency "thincloud-test", "~> 0.3.2"
 
-  gem.add_runtime_dependency "postmark-rails", "~> 0.4.1"
+  gem.add_dependency "postmark-rails", "~> 0.4.1"
 end
