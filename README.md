@@ -75,7 +75,7 @@ interceptor_bcc -> ENV["THINCLOUD_INTERCEPTOR_BCC"]
 The `Thincloud::Postmark` module accepts a `configure` block that takes the same options listed above. This block can be put into an initializer or inside of a `config\environments` file.
 
 ```ruby
-Thincloud::Postmark do |config|
+Thincloud::Postmark.configure do |config|
   config.api_key        = "MY_API_KEY"
   config.secure         = true
   config.interceptor_to = "keymaster@zuul.com"
