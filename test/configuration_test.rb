@@ -4,6 +4,8 @@ describe Thincloud::Postmark::Configuration do
   let(:config) { Thincloud::Postmark::Configuration.new }
 
   it { config.must_be_kind_of Thincloud::Postmark::Configuration }
+  it { config.must_respond_to :environments }
+  it { config.must_respond_to :environments= }
   it { config.must_respond_to :api_key }
   it { config.must_respond_to :api_key= }
   it { config.must_respond_to :secure }
@@ -15,6 +17,7 @@ describe Thincloud::Postmark::Configuration do
   it { config.must_respond_to :interceptor_bcc= }
 
   describe "defaults" do
+    it { config.environments.must_equal [] }
     it { config.api_key.must_equal "POSTMARK_API_TEST" }
     it { config.secure.must_equal true }
     it { ::Postmark.secure.must_equal true }

@@ -12,6 +12,7 @@ module Thincloud
 
     # Public: Configuration options for the Thincloud::Postmark module
     class Configuration
+      attr_accessor :environments
       attr_accessor :api_key
       attr_accessor :interceptor_to
       attr_accessor :interceptor_cc
@@ -25,6 +26,7 @@ module Thincloud
         interceptor_cc  = ENV["THINCLOUD_INTERCEPTOR_CC"]
         interceptor_bcc = ENV["THINCLOUD_INTERCEPTOR_BCC"]
 
+        @environments    = []
         @api_key         ||= api_key
         @interceptor_to  ||= interceptor_to
         @interceptor_cc  ||= interceptor_cc
