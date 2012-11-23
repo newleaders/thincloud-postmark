@@ -38,17 +38,27 @@ $ gem install thincloud-postmark
 
 ## Usage
 
+Thincloud::Postmark is only enabled for environments included in the `environments` array. For instance, to use `Postmark` in development and staging the list would look like this:
+
+```ruby
+[:development, :staging]
+```
+
+The different configuration options and detailed below.
+
 ### Configuration
 
 Thincloud::Postmark configuration options are available to customize the engine behavior. Available options and their default values:
 
 ```ruby
+# Rails environment(s) that should use the `postmark` delivery method.
+environments              = []
 api_key                   = "POSTMARK_API_TEST"
 interceptor_to            = nil
 interceptor_cc            = nil
 interceptor_bcc           = nil
 
-# Rails environment(s) as a symbol that should have mail intercepted
+# Rails environment(s) that should have mail intercepted.
 interceptor_environments  = []
 ```
 
@@ -76,6 +86,7 @@ The `Thincloud::Postmark` module accepts a `configure` block that takes the same
 
 ```ruby
 Thincloud::Postmark do |config|
+  environments          = [:development, :production]
   config.api_key        = "MY_API_KEY"
   config.secure         = true
   config.interceptor_to = "keymaster@zuul.com"
@@ -91,6 +102,7 @@ You can also access the configuration via the Rails configuration object. In fac
 
 ```ruby
 #...
+config.thincloud.postmark.environments = [:development, :production]
 config.thincloud.postmark.api_key = "MY_API_KEY"
 config.thincloud.postmark.secure  = false
 config.thincloud.postmark.interceptor_environments = [:staging]
