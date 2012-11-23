@@ -34,7 +34,10 @@ module Thincloud
       # process to make sure we have our config settings then we apply them
       # to AM::Base. Keep them in both places so config appears normal.
       initializer "thincloud.postmark.settings", before: "finisher_hook" do
-        if configuration.api_key
+        # TODO: Find a way to check other environments in the tests. The dummy
+        # application setup in Rails Engine testing only allows us to test one
+        # environment, :test in this case.
+        if configuration.environments.include?(Rails.env.to_sym)
           [ActionMailer::Base, config.action_mailer].each do |c|
             c.delivery_method   = :postmark
             c.postmark_settings = { api_key: configuration.api_key }
