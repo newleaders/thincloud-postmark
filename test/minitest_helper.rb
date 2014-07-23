@@ -1,13 +1,10 @@
-if RUBY_ENGINE == "ruby"
-  begin
-    require "simplecov"
-    SimpleCov.add_filter "test"
-    SimpleCov.add_filter "config"
-    SimpleCov.command_name "MiniTest"
-    SimpleCov.start
-  rescue LoadError
-    warn "unable to load SimpleCov"
-  end
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
+require "simplecov"
+SimpleCov.start do
+  add_filter { |src| src.filename =~ /bundle|test|config|vendor/ }
+  command_name "Minitest"
 end
 
 ENV["RAILS_ENV"] = "test"

@@ -1,3 +1,5 @@
+require "mail"
+
 module Thincloud
   module Postmark
     # Public: Thincloud Postmark Engine
