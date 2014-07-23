@@ -1,4 +1,9 @@
-# Thincloud::Postmark
+# thincloud-postmark
+
+[![Gem Version](https://badge.fury.io/rb/thincloud-postmark.svg)](http://badge.fury.io/rb/thincloud-postmark)
+[![Build Status](https://travis-ci.org/newleaders/thincloud-postmark.svg?branch=master)](https://travis-ci.org/newleaders/thincloud-postmark)
+[![Code Climate](https://codeclimate.com/github/newleaders/thincloud-postmark.png)](https://codeclimate.com/github/newleaders/thincloud-postmark)
+[![Test Coverage](https://codeclimate.com/github/newleaders/thincloud-postmark/coverage.png)](https://codeclimate.com/github/newleaders/thincloud-postmark)
 
 ## Description
 
@@ -18,13 +23,15 @@ This gem requires Rails 3.2+ and has been tested on the following versions:
 This gem has been tested against the following Ruby versions:
 
 * 1.9.3
+* 2.0.0
+* 2.1.2
 
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-``` ruby
+```ruby
 gem "thincloud-postmark"
 ```
 
@@ -72,12 +79,12 @@ config.action_mailer.default_url_options = { host: "mydomain.com" }
 
 Several of the options will use environment variables when found.
 
-```
-api_key         -> ENV["POSTMARK_API_KEY"]
-secure          -> ENV["POSTMARK_SECURE"]
-interceptor_to  -> ENV["THINCLOUD_INTERCEPTOR_TO"]
-interceptor_cc  -> ENV["THINCLOUD_INTERCEPTOR_CC"]
-interceptor_bcc -> ENV["THINCLOUD_INTERCEPTOR_BCC"]
+```ruby
+api_key          # ENV["POSTMARK_API_KEY"]
+secure           # ENV["POSTMARK_SECURE"]
+interceptor_to   # ENV["THINCLOUD_INTERCEPTOR_TO"]
+interceptor_cc   # ENV["THINCLOUD_INTERCEPTOR_CC"]
+interceptor_bcc  # ENV["THINCLOUD_INTERCEPTOR_BCC"]
 ```
 
 #### Configuration Block
@@ -171,6 +178,6 @@ Mail.register_interceptor(MailInterceptor) unless Rails.env.production?
 
 ## License
 
-* Freely distributable and licensed under the [MIT license](http://newleaders.mit-license.org/2012/license.html).
-* Copyright (c) 2012 New Leaders ([opensource@newleaders.com](opensource@newleaders.com))
+* Freely distributable and licensed under the [MIT license](http://newleaders.mit-license.org/2012-2014/license.html).
+* Copyright (c) 2012-2014 New Leaders ([opensource@newleaders.com](opensource@newleaders.com))
 * [https://newleaders.com](https://newleaders.com)
