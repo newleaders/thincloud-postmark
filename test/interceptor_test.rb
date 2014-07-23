@@ -17,7 +17,7 @@ describe Thincloud::Postmark::Interceptor do
       @msg = interceptor.delivering_email(mail)
     end
 
-    it { @msg.subject.must_equal "rpeck@epa.gov Subject" }
+    it { @msg.subject.must_equal "[rpeck@epa.gov] Subject" }
   end
 
   describe "sets email `to`" do

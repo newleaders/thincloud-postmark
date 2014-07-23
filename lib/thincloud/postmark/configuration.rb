@@ -1,4 +1,5 @@
 module Thincloud
+  # Public: Postmark configuration namespace for Thincloud applications
   module Postmark
     class << self
       attr_accessor :configuration
@@ -20,20 +21,16 @@ module Thincloud
       attr_accessor :interceptor_environments
 
       def initialize
-        api_key         = ENV["POSTMARK_API_KEY"] || "POSTMARK_API_TEST"
-        secure          = ENV["POSTMARK_SECURE"] || true
-        interceptor_to  = ENV["THINCLOUD_INTERCEPTOR_TO"]
-        interceptor_cc  = ENV["THINCLOUD_INTERCEPTOR_CC"]
-        interceptor_bcc = ENV["THINCLOUD_INTERCEPTOR_BCC"]
+        @api_key ||= ENV.fetch("POSTMARK_API_KEY", "POSTMARK_API_TEST")
 
-        @environments    = []
-        @api_key         ||= api_key
-        @interceptor_to  ||= interceptor_to
-        @interceptor_cc  ||= interceptor_cc
-        @interceptor_bcc ||= interceptor_bcc
+        @interceptor_to  ||= ENV["THINCLOUD_INTERCEPTOR_TO"]
+        @interceptor_cc  ||= ENV["THINCLOUD_INTERCEPTOR_CC"]
+        @interceptor_bcc ||= ENV["THINCLOUD_INTERCEPTOR_BCC"]
 
+        @environments = []
         @interceptor_environments = []
-        self.secure = secure
+
+        self.secure = ENV.fetch("POSTMARK_SECURE", true)
       end
 
       def secure=(s)

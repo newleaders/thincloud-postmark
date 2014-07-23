@@ -2,7 +2,6 @@ module Thincloud
   module Postmark
     # Public: Thincloud Postmark Engine
     class Engine < ::Rails::Engine
-
       # convenience method for engine options / configuration
       def configuration
         Thincloud::Postmark.configuration
@@ -44,7 +43,6 @@ module Thincloud
           end
         end
       end
-
     end
   end
 end
