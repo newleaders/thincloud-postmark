@@ -1,12 +1,18 @@
 language: ruby
 rvm:
-  - 1.9.2
-  - 1.9.3
-  - jruby-19mode
-  - rbx-19mode
-env:
-  - RAILS_ENV=test JRUBY_OPTS=--1.9 RBXOPT=-X19
-before_script: "./test/ci/before_script.sh"
-script: "./test/ci/ci_runner.sh"
+- 1.9.3
+- 2.0.0
+- 2.1.2
+bundler_args: "--without local"
+before_script:
+- bundle exec rake app:db:setup
+script:
+- bundle exec rake test
+- bundle exec rake cane
+- bundle exec rake rubocop
 notifications:
-  flowdock: 1ec5c0efa5a264c67c6ba3b2e6574a70
+  flowdock:
+    secure: hRaeI2fe3mbWP3BbIkurjuLLu7Lbq4ReE0Ee1i4h+drvv+pio6BItuTd7ujlhM80ZkRfpffTOZdk34fbZduf1WB+peWaYfO1f2kDPviap7wdnFRlSpJF/KaDS3/D70zA8RycSC1Oaam34cKoVg1Gmdwl0/EJAsRncfu3I+tYyiA=
+env:
+  global:
+    secure: w/lOREURd+nNeOdLPffnsVT9jwvrp/ougA8a/d2EZJ48pMp1d+5bL83ZwcUfVdDoNq8YEFu+fje8La4LmkdL1GUhnHGmznkVlPnPVMMZE5fenYiJIgkyhDe4EchBXUifT0iH4HjB4SsbaehzPy78H9ceD9qtG2zyCtDhzx0ic/A=
