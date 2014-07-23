@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Thincloud::Postmark::VERSION
 
-  gem.add_development_dependency "thincloud-test", "~> 0.3.2"
+  gem.add_development_dependency "thincloud-test-rails"
 
   gem.add_dependency "postmark-rails", "~> 0.4.1"
 end
