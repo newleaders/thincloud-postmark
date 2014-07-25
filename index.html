@@ -1,39 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
-    <meta charset='utf-8'>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+    <title>Thincloud Postmark by newleaders</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Thincloud Postmark by newleaders</title>
   </head>
-
   <body>
-    <div id="container">
-      <div class="inner">
+    <div class="wrapper">
+      <header>
+        <h1>Thincloud Postmark</h1>
+        <p>Generator for Postmark configuration in Rails 3 apps.</p>
+        <p class="view"><a href="https://github.com/newleaders/thincloud-postmark">View the Project on GitHub <small>newleaders/thincloud-postmark</small></a></p>
+        <ul>
+          <li><a href="https://github.com/newleaders/thincloud-postmark/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/newleaders/thincloud-postmark/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/newleaders/thincloud-postmark">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p><a href="http://badge.fury.io/rb/thincloud-postmark"><img src="https://badge.fury.io/rb/thincloud-postmark.svg" alt="Gem Version"></a>
+<a href="https://travis-ci.org/newleaders/thincloud-postmark"><img src="https://travis-ci.org/newleaders/thincloud-postmark.svg?branch=master" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/newleaders/thincloud-postmark"><img src="https://codeclimate.com/github/newleaders/thincloud-postmark.png" alt="Code Climate"></a>
+<a href="https://codeclimate.com/github/newleaders/thincloud-postmark"><img src="https://codeclimate.com/github/newleaders/thincloud-postmark/coverage.png" alt="Test Coverage"></a></p>
 
-        <header>
-          <h1>Thincloud Postmark</h1>
-          <h2>Generator for Postmark configuration in Rails 3 apps.</h2>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/newleaders/thincloud-postmark/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/newleaders/thincloud-postmark/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/newleaders/thincloud-postmark" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h1>Thincloud::Postmark</h1>
-
-<h2>Description</h2>
+<h2>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>Description</h2>
 
 <p>Rails Engine to provide <a href="http://postmarkapp.com">Postmark</a> configuration for Thincloud applications.</p>
 
@@ -42,7 +42,8 @@
 <ul>
 <li>Manages all of the <code>Postmark</code> dependencies for your application</li>
 <li>Optionally registers a <code>Mail</code> interceptor</li>
-</ul><h2>Requirements</h2>
+</ul><h2>
+<a name="requirements" class="anchor" href="#requirements"><span class="octicon octicon-link"></span></a>Requirements</h2>
 
 <p>This gem requires Rails 3.2+ and has been tested on the following versions:</p>
 
@@ -52,11 +53,14 @@
 
 <ul>
 <li>1.9.3</li>
-</ul><h2>Installation</h2>
+<li>2.0.0</li>
+<li>2.1.2</li>
+</ul><h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
 
 <p>Add this line to your application's Gemfile:</p>
 
-<div class="highlight"><pre><span class="n">gem</span> <span class="s2">"thincloud-postmark"</span>
+<div class="highlight highlight-ruby"><pre><span class="n">gem</span> <span class="s2">"thincloud-postmark"</span>
 </pre></div>
 
 <ul>
@@ -67,20 +71,22 @@
 <pre><code>$ gem install thincloud-postmark
 </code></pre>
 
-<h2>Usage</h2>
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <p>Thincloud::Postmark is only enabled for environments included in the <code>environments</code> array. For instance, to use <code>Postmark</code> in development and staging the list would look like this:</p>
 
-<div class="highlight"><pre><span class="o">[</span><span class="ss">:development</span><span class="p">,</span> <span class="ss">:staging</span><span class="o">]</span>
+<div class="highlight highlight-ruby"><pre><span class="o">[</span><span class="ss">:development</span><span class="p">,</span> <span class="ss">:staging</span><span class="o">]</span>
 </pre></div>
 
 <p>The different configuration options and detailed below.</p>
 
-<h3>Configuration</h3>
+<h3>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h3>
 
 <p>Thincloud::Postmark configuration options are available to customize the engine behavior. Available options and their default values:</p>
 
-<div class="highlight"><pre><span class="c1"># Rails environment(s) that should use the `postmark` delivery method.</span>
+<div class="highlight highlight-ruby"><pre><span class="c1"># Rails environment(s) that should use the `postmark` delivery method.</span>
 <span class="n">environments</span>              <span class="o">=</span> <span class="o">[]</span>
 <span class="n">api_key</span>                   <span class="o">=</span> <span class="s2">"POSTMARK_API_TEST"</span>
 <span class="n">interceptor_to</span>            <span class="o">=</span> <span class="kp">nil</span>
@@ -93,25 +99,27 @@
 
 <p><em>Note: Don't forget to set the <code>default_url_options</code></em></p>
 
-<div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">host</span><span class="p">:</span> <span class="s2">"mydomain.com"</span> <span class="p">}</span>
+<div class="highlight highlight-ruby"><pre><span class="n">config</span><span class="o">.</span><span class="n">action_mailer</span><span class="o">.</span><span class="n">default_url_options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">host</span><span class="p">:</span> <span class="s2">"mydomain.com"</span> <span class="p">}</span>
 </pre></div>
 
-<h4>Environment Variables</h4>
+<h4>
+<a name="environment-variables" class="anchor" href="#environment-variables"><span class="octicon octicon-link"></span></a>Environment Variables</h4>
 
 <p>Several of the options will use environment variables when found.</p>
 
-<pre><code>api_key         -&gt; ENV["POSTMARK_API_KEY"]
-secure          -&gt; ENV["POSTMARK_SECURE"]
-interceptor_to  -&gt; ENV["THINCLOUD_INTERCEPTOR_TO"]
-interceptor_cc  -&gt; ENV["THINCLOUD_INTERCEPTOR_CC"]
-interceptor_bcc -&gt; ENV["THINCLOUD_INTERCEPTOR_BCC"]
-</code></pre>
+<div class="highlight highlight-ruby"><pre><span class="n">api_key</span>          <span class="c1"># ENV["POSTMARK_API_KEY"]</span>
+<span class="n">secure</span>           <span class="c1"># ENV["POSTMARK_SECURE"]</span>
+<span class="n">interceptor_to</span>   <span class="c1"># ENV["THINCLOUD_INTERCEPTOR_TO"]</span>
+<span class="n">interceptor_cc</span>   <span class="c1"># ENV["THINCLOUD_INTERCEPTOR_CC"]</span>
+<span class="n">interceptor_bcc</span>  <span class="c1"># ENV["THINCLOUD_INTERCEPTOR_BCC"]</span>
+</pre></div>
 
-<h4>Configuration Block</h4>
+<h4>
+<a name="configuration-block" class="anchor" href="#configuration-block"><span class="octicon octicon-link"></span></a>Configuration Block</h4>
 
 <p>The <code>Thincloud::Postmark</code> module accepts a <code>configure</code> block that takes the same options listed above. This block can be put into an initializer or inside of a <code>config\environments</code> file.</p>
 
-<div class="highlight"><pre><span class="ss">Thincloud</span><span class="p">:</span><span class="ss">:Postmark</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
+<div class="highlight highlight-ruby"><pre><span class="no">Thincloud</span><span class="o">::</span><span class="no">Postmark</span><span class="o">.</span><span class="n">configure</span> <span class="k">do</span> <span class="o">|</span><span class="n">config</span><span class="o">|</span>
   <span class="n">config</span><span class="o">.</span><span class="n">environments</span>   <span class="o">=</span> <span class="o">[</span><span class="ss">:development</span><span class="p">,</span> <span class="ss">:production</span><span class="o">]</span>
   <span class="n">config</span><span class="o">.</span><span class="n">api_key</span>        <span class="o">=</span> <span class="s2">"MY_API_KEY"</span>
   <span class="n">config</span><span class="o">.</span><span class="n">secure</span>         <span class="o">=</span> <span class="kp">true</span>
@@ -122,11 +130,12 @@ interceptor_bcc -&gt; ENV["THINCLOUD_INTERCEPTOR_BCC"]
 <span class="k">end</span>
 </pre></div>
 
-<h4>Rails Configuration</h4>
+<h4>
+<a name="rails-configuration" class="anchor" href="#rails-configuration"><span class="octicon octicon-link"></span></a>Rails Configuration</h4>
 
 <p>You can also access the configuration via the Rails configuration object. In fact, the engine uses the Rails config as storage when the block syntax is used. The <code>Thincloud::Postmark::Configuration</code> object is made available under <code>config.thincloud.postmark</code>. You can access this configuration in <code>config/application.rb</code> or in your <code>config/environments</code> files.</p>
 
-<div class="highlight"><pre><span class="c1">#...</span>
+<div class="highlight highlight-ruby"><pre><span class="c1">#...</span>
 <span class="n">config</span><span class="o">.</span><span class="n">thincloud</span><span class="o">.</span><span class="n">postmark</span><span class="o">.</span><span class="n">environments</span> <span class="o">=</span> <span class="o">[</span><span class="ss">:development</span><span class="p">,</span> <span class="ss">:production</span><span class="o">]</span>
 <span class="n">config</span><span class="o">.</span><span class="n">thincloud</span><span class="o">.</span><span class="n">postmark</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s2">"MY_API_KEY"</span>
 <span class="n">config</span><span class="o">.</span><span class="n">thincloud</span><span class="o">.</span><span class="n">postmark</span><span class="o">.</span><span class="n">secure</span>  <span class="o">=</span> <span class="kp">false</span>
@@ -136,11 +145,12 @@ interceptor_bcc -&gt; ENV["THINCLOUD_INTERCEPTOR_BCC"]
 
 <p><em>Note: Configuration values take precendence over environment variables.</em></p>
 
-<h4>Default Interceptor</h4>
+<h4>
+<a name="default-interceptor" class="anchor" href="#default-interceptor"><span class="octicon octicon-link"></span></a>Default Interceptor</h4>
 
 <p>The default interceptor is registered for environments included in the <code>interceptor_environments</code> array. It replaces the recipients with those contained in the configuration and replaces the subject of outgoing email with the original <code>to</code> combined with the original <code>subject</code>.</p>
 
-<div class="highlight"><pre><span class="k">class</span> <span class="nc">Thincloud</span><span class="o">::</span><span class="ss">Postmark</span><span class="p">:</span><span class="ss">:Interceptor</span>
+<div class="highlight highlight-ruby"><pre><span class="k">class</span> <span class="nc">Thincloud</span><span class="o">::</span><span class="no">Postmark</span><span class="o">::</span><span class="no">Interceptor</span>
   <span class="c1"># ...</span>
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">delivering_email</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
     <span class="n">message</span><span class="o">.</span><span class="n">subject</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">message</span><span class="o">.</span><span class="n">to</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">message</span><span class="o">.</span><span class="n">subject</span><span class="si">}</span><span class="s2">"</span>
@@ -152,18 +162,19 @@ interceptor_bcc -&gt; ENV["THINCLOUD_INTERCEPTOR_BCC"]
 <span class="k">end</span>
 </pre></div>
 
-<h4>Overriding the Interceptor</h4>
+<h4>
+<a name="overriding-the-interceptor" class="anchor" href="#overriding-the-interceptor"><span class="octicon octicon-link"></span></a>Overriding the Interceptor</h4>
 
 <p>You may find that the default Interceptor does not meet your requirements. In that case you can easily create your own and prevent the default from being registered.</p>
 
 <ul>
 <li>Disable the default interceptor</li>
-</ul><div class="highlight"><pre><span class="n">interceptor_environments</span> <span class="o">=</span> <span class="o">[]</span>
+</ul><div class="highlight highlight-ruby"><pre><span class="n">interceptor_environments</span> <span class="o">=</span> <span class="o">[]</span>
 </pre></div>
 
 <ul>
 <li>Create your interceptor</li>
-</ul><div class="highlight"><pre><span class="c1"># Public: Mail Interceptor to use when overriding defaults</span>
+</ul><div class="highlight highlight-ruby"><pre><span class="c1"># Public: Mail Interceptor to use when overriding defaults</span>
 <span class="k">class</span> <span class="nc">MailInterceptor</span>
   <span class="k">def</span> <span class="nc">self</span><span class="o">.</span><span class="nf">delivering_email</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>
     <span class="n">message</span><span class="o">.</span><span class="n">subject</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">message</span><span class="o">.</span><span class="n">to</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">message</span><span class="o">.</span><span class="n">subject</span><span class="si">}</span><span class="s2">"</span>
@@ -176,12 +187,13 @@ interceptor_bcc -&gt; ENV["THINCLOUD_INTERCEPTOR_BCC"]
 
 <ul>
 <li>Register your interceptor in an initializer</li>
-</ul><div class="highlight"><pre><span class="nb">require</span> <span class="s2">"mail_interceptor"</span>
+</ul><div class="highlight highlight-ruby"><pre><span class="nb">require</span> <span class="s2">"mail_interceptor"</span>
 
 <span class="no">Mail</span><span class="o">.</span><span class="n">register_interceptor</span><span class="p">(</span><span class="no">MailInterceptor</span><span class="p">)</span> <span class="k">unless</span> <span class="no">Rails</span><span class="o">.</span><span class="n">env</span><span class="o">.</span><span class="n">production?</span>
 </pre></div>
 
-<h2>Contributing</h2>
+<h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
 
 <ol>
 <li><a href="https://github.com/newleaders/thincloud-postmark/fork_select">Fork it</a></li>
@@ -189,21 +201,22 @@ interceptor_bcc -&gt; ENV["THINCLOUD_INTERCEPTOR_BCC"]
 <li>Commit your changes (<code>git commit -am 'Added some feature'</code>)</li>
 <li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
 <li><a href="https://github.com/newleaders/thincloud-postmark/pull/new">Create a Pull Request</a></li>
-</ol><h2>License</h2>
+</ol><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <ul>
-<li>Freely distributable and licensed under the <a href="http://newleaders.mit-license.org/2012/license.html">MIT license</a>.</li>
-<li>Copyright (c) 2012 New Leaders (<a href="opensource@newleaders.com">opensource@newleaders.com</a>)</li>
+<li>Freely distributable and licensed under the <a href="http://newleaders.mit-license.org/2012-2014/license.html">MIT license</a>.</li>
+<li>Copyright (c) 2012-2014 New Leaders (<a href="opensource@newleaders.com">opensource@newleaders.com</a>)</li>
 <li><a href="https://newleaders.com">https://newleaders.com</a></li>
 </ul>
-        </section>
-
-        <footer>
-          Thincloud Postmark is maintained by <a href="https://github.com/newleaders">newleaders</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-                  <script type="text/javascript">
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/newleaders">newleaders</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -214,7 +227,5 @@ interceptor_bcc -&gt; ENV["THINCLOUD_INTERCEPTOR_BCC"]
             } catch(err) {}
           </script>
 
-      </div>
-    </div>
   </body>
 </html>
