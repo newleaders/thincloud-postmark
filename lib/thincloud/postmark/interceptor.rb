@@ -9,10 +9,10 @@ module Thincloud
       end
 
       def self.delivering_email(message)
-        message.subject = "#{message.to} #{message.subject}"
-        message.to      = self.to
-        message.cc      = self.cc
-        message.bcc     = self.bcc
+        message.subject = "[#{message.to}] #{message.subject}"
+        message.to      = to
+        message.cc      = cc
+        message.bcc     = bcc
         message
       end
     end

@@ -1,24 +1,21 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
 # Declare your gem's dependencies in thincloud-resque.gemspec.
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 gemspec
 
-# jquery-rails is used by the dummy application
-gem "jquery-rails"
+gem "rails", "~> 3.2.19"
+gem "jquery-rails"  # jquery-rails is used by the dummy application
 
-platforms :jruby do
-  gem "activerecord-jdbc-adapter", :require => false
+group :local do
+  gem "travis"
 end
 
 group :test do
-  platforms :ruby do
-    gem "simplecov"
-    gem "sqlite3"
-  end
-
-  platforms :jruby do
-    gem "activerecord-jdbcsqlite3-adapter", :require => false
-  end
+  gem "codeclimate-test-reporter", require: false
+  gem "rake"
+  gem "rubocop"
+  gem "simplecov"
+  gem "sqlite3"
 end

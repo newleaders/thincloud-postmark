@@ -1,0 +1,17 @@
+AllCops:
+  Exclude:
+    - "test/dummy/**/*"
+
+Style/FileName:
+  Exclude:
+    - lib/thincloud-postmark.rb
+    - test/thincloud-postmark_test.rb
+
+LineLength:
+  Max: 80
+
+StringLiterals:
+  EnforcedStyle: double_quotes
+
+inherit_from: test/rubocop/enabled.yml
+inherit_from: test/rubocop/disabled.yml
