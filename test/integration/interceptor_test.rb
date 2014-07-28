@@ -1,13 +1,18 @@
 require "minitest_helper"
 
 describe Thincloud::Postmark::Interceptor do
-  let(:interceptor) { Thincloud::Postmark::Interceptor }
-  let(:interceptors) { ::Mail.class_variable_get(:@@delivery_interceptors) }
+  let(:interceptor) do
+    Thincloud::Postmark::Interceptor
+  end
+
+  let(:interceptors) do
+    ::Mail.class_variable_get(:@@delivery_interceptors)
+  end
 
   describe "after Rails config" do
-    it { interceptors.must_include Thincloud::Postmark::Interceptor }
-    it { interceptor.to.must_equal "marshmellowman@staypuft.com" }
-    it { interceptor.cc.must_be_nil }
-    it { interceptor.bcc.must_be_nil }
+    specify { interceptors.must_include Thincloud::Postmark::Interceptor }
+    specify { interceptor.to.must_equal "marshmellowman@staypuft.com" }
+    specify { interceptor.cc.must_be_nil }
+    specify { interceptor.bcc.must_be_nil }
   end
 end

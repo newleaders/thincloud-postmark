@@ -1,11 +1,13 @@
 require "minitest_helper"
 
 describe Dummy::Application.config do
-  let(:config) { Dummy::Application.config.thincloud.postmark }
+  let(:config) do
+    Dummy::Application.config.thincloud.postmark
+  end
 
   # defaults
-  it { config.must_be_kind_of Thincloud::Postmark::Configuration }
-  it { config.api_key.must_equal "INITIALIZER" }
+  specify { config.must_be_kind_of Thincloud::Postmark::Configuration }
+  specify { config.api_key.must_equal "INITIALIZER" }
 
   describe "with configure block" do
     before do
@@ -14,7 +16,7 @@ describe Dummy::Application.config do
       end
     end
 
-    it { config.api_key.must_equal "abc123" }
+    specify { config.api_key.must_equal "abc123" }
   end
 
   describe "changes Postmark secure setting" do
@@ -26,25 +28,22 @@ describe Dummy::Application.config do
       end
     end
 
-    after { config.secure = @original_setting }
+    after do
+      config.secure = @original_setting
+    end
 
-    it { config.secure.must_equal false }
-    it { ::Postmark.secure.must_equal false }
+    specify { config.secure.must_equal false }
+    specify { ::Postmark.secure.must_equal false }
   end
 
-  describe "updates Rails application configuration" do
-    let(:app_config) { Dummy::Application.config.action_mailer }
-    let(:settings) { { api_key: "INITIALIZER" } }
+  describe "configuration updates" do
+    let(:settings) do
+      { api_key: "INITIALIZER" }
+    end
 
-    it { app_config.delivery_method.must_equal :postmark }
-    it { app_config.postmark_settings.must_equal settings }
-  end
-
-  describe "updates ActionMailer configuration" do
-    let(:base_config) { ActionMailer::Base }
-    let(:settings) { { api_key: "INITIALIZER" } }
-
-    it { base_config.delivery_method.must_equal :postmark }
-    it { base_config.postmark_settings.must_equal settings }
+    [Dummy::Application.config.action_mailer, ActionMailer::Base].each do |conf|
+      specify { conf.delivery_method.must_equal :postmark }
+      specify { conf.postmark_settings.must_equal settings }
+    end
   end
 end
