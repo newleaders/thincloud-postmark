@@ -1,6 +1,7 @@
 # thincloud-postmark
 
 [![Gem Version](https://badge.fury.io/rb/thincloud-postmark.svg)](http://badge.fury.io/rb/thincloud-postmark)
+[![Dependency Status](https://gemnasium.com/newleaders/thincloud-postmark.svg)](https://gemnasium.com/newleaders/thincloud-postmark)
 [![Build Status](https://travis-ci.org/newleaders/thincloud-postmark.svg?branch=master)](https://travis-ci.org/newleaders/thincloud-postmark)
 [![Code Climate](https://codeclimate.com/github/newleaders/thincloud-postmark.png)](https://codeclimate.com/github/newleaders/thincloud-postmark)
 [![Test Coverage](https://codeclimate.com/github/newleaders/thincloud-postmark/coverage.png)](https://codeclimate.com/github/newleaders/thincloud-postmark)
