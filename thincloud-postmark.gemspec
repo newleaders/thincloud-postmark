@@ -18,10 +18,10 @@ Gem::Specification.new do |gem|
   gem.version       = Thincloud::Postmark::VERSION
   gem.licenses      = ["MIT"]
 
-  gem.add_dependency "postmark-rails", "~> 0.8.0"
+  gem.add_dependency "postmark-rails", "~> 0.10.0"
 
   gem.add_development_dependency "thincloud-test-rails"
-  gem.add_development_dependency "rails", "~> 3.2.19"
+  gem.add_development_dependency "rails", "~> 3.2.21"
   gem.add_development_dependency "rubocop"
   gem.add_development_dependency "sqlite3"
 end
