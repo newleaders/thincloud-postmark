@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.version       = Thincloud::Postmark::VERSION
   gem.licenses      = ["MIT"]
 
-  gem.add_dependency "postmark-rails", "~> 0.10.0"
+  gem.add_dependency "postmark-rails", "~> 0.12.0"
 
   gem.add_development_dependency "thincloud-test-rails"
   gem.add_development_dependency "rails", "~> 3.2.21"
